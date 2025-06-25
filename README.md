@@ -9,7 +9,7 @@
 
 <br/>
 
-**🏛️ Environmental Protection Agency | ⚡ St. Michael Enterprises LLC**
+**🏛️ Environmental Protection Agency | ⚡ St. Michael LLC | 🚀 Quartermasters FZC**
 
 ---
 
@@ -662,7 +662,7 @@ data:
 ### 📞 **24/7 Support Channels**
 - **🚨 Emergency Hotline**: +1-800-EPA-HELP
 - **💬 Live Chat**: Integrated support widget
-- **📧 Email Support**: support@stmichael-enterprises.com
+- **📧 Email Support**: hello@quartermasters.me
 - **🎥 Video Consultation**: Scheduled technical sessions
 - **📚 Knowledge Base**: Comprehensive documentation portal
 
@@ -713,6 +713,43 @@ data:
 
 ---
 
+## 🏢 **Development Partnership**
+
+<div align="center">
+
+### 🚀 **Quartermasters FZC** × **St. Michael LLC**
+
+<table>
+<tr>
+<td width="50%" align="center">
+
+### 🚀 **Technical Development**
+**Quartermasters FZC**
+
+**📧 Contact**: hello@quartermasters.me  
+**🌐 Platform**: Advanced technology solutions  
+**🔧 Expertise**: Full-stack development, AI/ML integration  
+**🎯 Focus**: Next-generation software architecture  
+
+</td>
+<td width="50%" align="center">
+
+### 🏢 **Strategic Implementation**
+**St. Michael LLC**
+
+**🌐 Website**: www.stmichaelenterprises.com  
+**🎯 Mission**: Enterprise solutions delivery  
+**🔒 Compliance**: Federal contracting excellence  
+**🤝 Partnership**: Government technology services  
+
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
 <div align="center">
 
 ## 🎯 **Final Submission Status**
@@ -735,7 +772,12 @@ data:
 ---
 
 ### 🏛️ **Environmental Protection Agency**
-**Contract 68HERD25Q0050 | St. Michael Enterprises LLC**
+**Contract 68HERD25Q0050**
+
+**🚀 Developed by**: Quartermasters FZC  
+**🏢 Delivered through**: St. Michael LLC  
+**📧 Technical Contact**: hello@quartermasters.me  
+**🌐 Business Contact**: www.stmichaelenterprises.com  
 
 *Delivering Excellence in Federal Ethics Training Technology*
 
