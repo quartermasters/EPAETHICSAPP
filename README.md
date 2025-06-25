@@ -355,4 +355,3 @@ Professional Federal Ethics Solutions
 ---
 
 *🏛️ Developed for the U.S. Environmental Protection Agency*  
-*🤖 Generated with [Claude Code](https://claude.ai/code)*
