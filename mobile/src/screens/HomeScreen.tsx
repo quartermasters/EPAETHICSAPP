@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Image,
   AccessibilityInfo,
   Dimensions,
+  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import ContractorFooter from '../components/StMichael/ContractorFooter';
+import { authStorage } from '../utils/storage';
+import apiService from '../services/api';
+import { User, UserProgress } from '../types';
 
 const { width } = Dimensions.get('window');
 
@@ -50,10 +54,50 @@ const QuickAction: React.FC<QuickActionProps> = ({
 );
 
 const HomeScreen: React.FC = () => {
-  const handleQuickAction = (action: string) => {
-    AccessibilityInfo.announceForAccessibility(`Navigating to ${action}`);
-    // Navigation will be handled by parent navigator
+  const navigation = useNavigation();
+  const [user, setUser] = useState<User | null>(null);
+  const [userProgress, setUserProgress] = useState<UserProgress[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    loadUserData();
+  }, []);
+
+  const loadUserData = async () => {
+    try {
+      setIsLoading(true);
+      const userData = await authStorage.getUserData();
+      setUser(userData);
+
+      if (userData) {
+        const progressResponse = await apiService.getUserProgress();
+        if (progressResponse.success && progressResponse.data) {
+          setUserProgress(progressResponse.data);
+        }
+      }
+    } catch (error) {
+      console.error('Error loading user data:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  const handleQuickAction = (action: string, route: string) => {
+    AccessibilityInfo.announceForAccessibility(`Navigating to ${action}`);
+    (navigation as any).navigate(route);
+  };
+
+  const getProgressSummary = () => {
+    if (userProgress.length === 0) return null;
+    
+    const completed = userProgress.filter(p => p.status === 'completed').length;
+    const inProgress = userProgress.filter(p => p.status === 'in_progress').length;
+    const total = userProgress.length;
+
+    return { completed, inProgress, total };
+  };
+
+  const progressSummary = getProgressSummary();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -68,13 +112,46 @@ const HomeScreen: React.FC = () => {
             <Text style={styles.logoText}>EPA</Text>
             <Text style={styles.logoSubtext}>Ethics</Text>
           </View>
-          <Text style={styles.welcomeTitle}>Welcome to EthicsGo</Text>
+          <Text style={styles.welcomeTitle}>
+            Welcome{user ? `, ${user.firstName}` : ' to EthicsGo'}
+          </Text>
           <Text style={styles.welcomeDescription}>
             Your guide to federal ethics awareness and compliance. 
             Access training materials, test your knowledge, and stay informed 
             about ethical standards in federal service.
           </Text>
         </View>
+
+        {/* Progress Summary */}
+        {progressSummary && (
+          <View style={styles.progressSection}>
+            <Text style={styles.sectionTitle}>Your Progress</Text>
+            <View style={styles.progressCard}>
+              <View style={styles.progressStats}>
+                <View style={styles.progressStat}>
+                  <Text style={styles.progressNumber}>{progressSummary.completed}</Text>
+                  <Text style={styles.progressLabel}>Completed</Text>
+                </View>
+                <View style={styles.progressStat}>
+                  <Text style={styles.progressNumber}>{progressSummary.inProgress}</Text>
+                  <Text style={styles.progressLabel}>In Progress</Text>
+                </View>
+                <View style={styles.progressStat}>
+                  <Text style={styles.progressNumber}>{progressSummary.total}</Text>
+                  <Text style={styles.progressLabel}>Total Modules</Text>
+                </View>
+              </View>
+              <View style={styles.progressBar}>
+                <View 
+                  style={[
+                    styles.progressFill, 
+                    { width: `${(progressSummary.completed / progressSummary.total) * 100}%` }
+                  ]} 
+                />
+              </View>
+            </View>
+          </View>
+        )}
 
         {/* Quick Actions */}
         <View style={styles.quickActionsSection}>
@@ -84,7 +161,7 @@ const HomeScreen: React.FC = () => {
             title="Start Ethics Guide"
             description="Interactive guide to federal ethics"
             icon="book-outline"
-            onPress={() => handleQuickAction('Ethics Guide')}
+            onPress={() => handleQuickAction('Ethics Guide', 'Ethics Guide')}
             accessibilityHint="Opens the interactive ethics guide"
           />
           
@@ -92,7 +169,7 @@ const HomeScreen: React.FC = () => {
             title="Take a Quiz"
             description="Test your ethics knowledge"
             icon="help-circle-outline"
-            onPress={() => handleQuickAction('Quiz')}
+            onPress={() => handleQuickAction('Quiz', 'Quiz')}
             accessibilityHint="Opens the ethics knowledge quiz"
           />
           
@@ -100,7 +177,7 @@ const HomeScreen: React.FC = () => {
             title="Watch Training Videos"
             description="Whiteboard training sessions"
             icon="play-circle-outline"
-            onPress={() => handleQuickAction('Videos')}
+            onPress={() => handleQuickAction('Videos', 'Videos')}
             accessibilityHint="Opens the training video library"
           />
           
@@ -108,7 +185,7 @@ const HomeScreen: React.FC = () => {
             title="Browse Resources"
             description="FAQs, glossary, and documents"
             icon="library-outline"
-            onPress={() => handleQuickAction('Resources')}
+            onPress={() => handleQuickAction('Resources', 'Resources')}
             accessibilityHint="Opens the resources and FAQ section"
           />
         </View>
@@ -283,6 +360,47 @@ const styles = StyleSheet.create({
     color: '#0066CC',
     marginLeft: 12,
     lineHeight: 20,
+  },
+  progressSection: {
+    padding: 20,
+    backgroundColor: '#FFFFFF',
+    marginTop: 8,
+  },
+  progressCard: {
+    backgroundColor: '#F8F9FA',
+    borderRadius: 8,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
+  },
+  progressStats: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 16,
+  },
+  progressStat: {
+    alignItems: 'center',
+  },
+  progressNumber: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#0066CC',
+  },
+  progressLabel: {
+    fontSize: 12,
+    color: '#666666',
+    marginTop: 4,
+  },
+  progressBar: {
+    height: 8,
+    backgroundColor: '#E5E5E5',
+    borderRadius: 4,
+    overflow: 'hidden',
+  },
+  progressFill: {
+    height: '100%',
+    backgroundColor: '#0066CC',
+    borderRadius: 4,
   },
 });
 

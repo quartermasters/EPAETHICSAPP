@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make:*)",
+      "Bash(docker-compose:*)",
+      "Bash(curl:*)",
+      "Bash(docker exec:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(lsof:*)"
+    ],
+    "deny": []
+  }
+}

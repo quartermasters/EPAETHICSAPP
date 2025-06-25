@@ -1,10 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
 
 interface LoginFormData {
   username: string;
@@ -15,66 +12,72 @@ interface LoginFormData {
 export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [showMFA, setShowMFA] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [mfaCode, setMfaCode] = useState('');
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
   const router = useRouter();
-  
-  const { register, handleSubmit, formState: { errors }, watch } = useForm<LoginFormData>();
 
-  const onSubmit = async (data: LoginFormData) => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setIsLoading(true);
+    setErrors({});
     
     try {
-      if (!showMFA) {
-        // First step: username/password
-        const result = await signIn('credentials', {
-          username: data.username,
-          password: data.password,
-          redirect: false,
-        });
+      if (!username) {
+        setErrors(prev => ({...prev, username: 'Username is required'}));
+        return;
+      }
+      if (!password) {
+        setErrors(prev => ({...prev, password: 'Password is required'}));
+        return;
+      }
+      if (showMFA && !mfaCode) {
+        setErrors(prev => ({...prev, mfaCode: 'MFA code is required'}));
+        return;
+      }
 
-        if (result?.error) {
-          if (result.error === 'MFA_REQUIRED') {
-            setShowMFA(true);
-            toast.success('Please enter your MFA code');
-          } else {
-            toast.error('Invalid credentials');
-          }
-        } else if (result?.ok) {
-          toast.success('Login successful');
-          router.push('/dashboard');
-        }
+      // Simulate login - replace with actual API call
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, mfaCode }),
+      });
+
+      if (response.ok) {
+        router.push('/dashboard');
       } else {
-        // Second step: MFA verification
-        const result = await signIn('credentials', {
-          username: data.username,
-          password: data.password,
-          mfaCode: data.mfaCode,
-          redirect: false,
-        });
-
-        if (result?.error) {
-          toast.error('Invalid MFA code');
-        } else if (result?.ok) {
-          toast.success('Login successful');
-          router.push('/dashboard');
+        const data = await response.json();
+        if (data.requiresMFA) {
+          setShowMFA(true);
+        } else {
+          setErrors(prev => ({...prev, general: 'Invalid credentials'}));
         }
       }
     } catch (error) {
-      toast.error('Login failed. Please try again.');
+      setErrors(prev => ({...prev, general: 'Login failed. Please try again.'}));
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+    <form className="space-y-6" onSubmit={handleSubmit}>
+      {errors.general && (
+        <div className="bg-red-50 border border-red-200 rounded-md p-4">
+          <p className="text-sm text-red-600">{errors.general}</p>
+        </div>
+      )}
+      
       <div>
         <label htmlFor="username" className="block text-sm font-medium text-gray-700">
           Username
         </label>
         <div className="mt-1">
           <input
-            {...register('username', { required: 'Username is required' })}
             type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             autoComplete="username"
             disabled={showMFA}
             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm disabled:bg-gray-100"
@@ -82,7 +85,7 @@ export default function LoginForm() {
           />
           {errors.username && (
             <p id="username-error" className="mt-2 text-sm text-red-600" role="alert">
-              {errors.username.message}
+              {errors.username}
             </p>
           )}
         </div>
@@ -94,8 +97,9 @@ export default function LoginForm() {
         </label>
         <div className="mt-1">
           <input
-            {...register('password', { required: 'Password is required' })}
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             autoComplete="current-password"
             disabled={showMFA}
             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm disabled:bg-gray-100"
@@ -103,7 +107,7 @@ export default function LoginForm() {
           />
           {errors.password && (
             <p id="password-error" className="mt-2 text-sm text-red-600" role="alert">
-              {errors.password.message}
+              {errors.password}
             </p>
           )}
         </div>
@@ -116,14 +120,9 @@ export default function LoginForm() {
           </label>
           <div className="mt-1">
             <input
-              {...register('mfaCode', { 
-                required: showMFA ? 'MFA code is required' : false,
-                pattern: {
-                  value: /^\d{6}$/,
-                  message: 'MFA code must be 6 digits'
-                }
-              })}
               type="text"
+              value={mfaCode}
+              onChange={(e) => setMfaCode(e.target.value)}
               inputMode="numeric"
               pattern="[0-9]*"
               maxLength={6}
@@ -133,7 +132,7 @@ export default function LoginForm() {
             />
             {errors.mfaCode && (
               <p id="mfa-error" className="mt-2 text-sm text-red-600" role="alert">
-                {errors.mfaCode.message}
+                {errors.mfaCode}
               </p>
             )}
             {!errors.mfaCode && (

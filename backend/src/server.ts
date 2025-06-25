@@ -15,9 +15,8 @@ import { authMiddleware } from './middleware/auth';
 
 // Import routes
 import authRoutes from './routes/auth';
-import contentRoutes from './routes/content';
-import adminRoutes from './routes/admin';
-import healthRoutes from './routes/health';
+import moduleRoutes from './routes/modules';
+import progressRoutes from './routes/progress';
 
 dotenv.config();
 
@@ -106,13 +105,20 @@ app.use(morgan('combined', {
   },
 }));
 
-// Health check (before auth middleware)
-app.use('/api/health', healthRoutes);
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    environment: process.env.NODE_ENV || 'development',
+  });
+});
 
 // API Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/content', contentRoutes);
-app.use('/api/admin', authMiddleware, adminRoutes);
+app.use('/api/modules', authMiddleware, moduleRoutes);
+app.use('/api/progress', authMiddleware, progressRoutes);
 
 // Security headers for static files
 app.use('/uploads', express.static('uploads', {

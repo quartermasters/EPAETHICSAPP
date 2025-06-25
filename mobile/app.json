@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "EPA Ethics",
+    "slug": "epa-ethics-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "gov.epa.ethics"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "gov.epa.ethics"
+    },
+    "platforms": ["ios", "android"],
+    "extra": {
+      "apiUrl": "http://localhost:3001"
+    }
+  }
+}

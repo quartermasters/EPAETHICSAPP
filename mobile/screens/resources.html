@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EthicsGo - Resources</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden" style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+    <div>
+      <div class="flex items-center bg-white p-4 pb-2 justify-between">
+        <h2 class="text-[#1B365D] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12 pr-12">Ethics Training</h2>
+      </div>
+      
+      <div class="px-4 py-3">
+        <label class="flex flex-col min-w-40 h-12 w-full">
+          <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+            <div class="text-[#696388] flex border-none bg-[#f1f0f4] items-center justify-center pl-4 rounded-l-xl border-r-0" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+              </svg>
+            </div>
+            <input placeholder="Search" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#121118] focus:outline-0 focus:ring-0 border-none bg-[#f1f0f4] focus:border-none h-full placeholder:text-[#696388] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" value="" />
+          </div>
+        </label>
+      </div>
+      
+      <div class="pb-3">
+        <div class="flex border-b border-[#dddce5] px-4 gap-8">
+          <a class="flex flex-col items-center justify-center border-b-[3px] border-b-[#A51C30] text-[#1B365D] pb-[13px] pt-4 cursor-pointer" href="#" onclick="showTab('faq')">
+            <p class="text-[#1B365D] text-sm font-bold leading-normal tracking-[0.015em]">FAQ</p>
+          </a>
+          <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#696388] pb-[13px] pt-4 cursor-pointer hover:text-[#121118] transition-colors" href="#" onclick="showTab('glossary')">
+            <p class="text-[#696388] text-sm font-bold leading-normal tracking-[0.015em]">Glossary</p>
+          </a>
+          <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#696388] pb-[13px] pt-4 cursor-pointer hover:text-[#121118] transition-colors" href="#" onclick="showTab('documents')">
+            <p class="text-[#696388] text-sm font-bold leading-normal tracking-[0.015em]">Documents</p>
+          </a>
+          <a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#696388] pb-[13px] pt-4 cursor-pointer hover:text-[#121118] transition-colors" href="#" onclick="showTab('contact')">
+            <p class="text-[#696388] text-sm font-bold leading-normal tracking-[0.015em]">Contact</p>
+          </a>
+        </div>
+      </div>
+      
+      <div id="faqTab" class="tab-content">
+        <h3 class="text-[#1B365D] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Frequently Asked Questions</h3>
+        <div class="flex flex-col p-4 gap-3">
+          <details class="flex flex-col rounded-xl border border-[#dddce5] bg-white px-[15px] py-[7px] group" open="">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+              <p class="text-[#121118] text-sm font-medium leading-normal">What are the ethics rules for federal employees?</p>
+              <div class="text-[#121118] group-open:rotate-180 transition-transform" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                </svg>
+              </div>
+            </summary>
+            <p class="text-[#696388] text-sm font-normal leading-normal pb-2">
+              Federal employees are subject to a comprehensive set of ethics rules designed to ensure integrity and impartiality in government service. These rules cover conflicts of interest, gifts, outside employment, and political activities to maintain public trust.
+            </p>
+          </details>
+          
+          <details class="flex flex-col rounded-xl border border-[#dddce5] bg-white px-[15px] py-[7px] group">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+              <p class="text-[#121118] text-sm font-medium leading-normal">How do I report a potential ethics violation?</p>
+              <div class="text-[#121118] group-open:rotate-180 transition-transform" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                </svg>
+              </div>
+            </summary>
+            <p class="text-[#696388] text-sm font-normal leading-normal pb-2">
+              Report potential ethics violations to your supervisor, ethics official, or through the agency's designated reporting channels. You can also contact the Office of Inspector General for serious violations.
+            </p>
+          </details>
+          
+          <details class="flex flex-col rounded-xl border border-[#dddce5] bg-white px-[15px] py-[7px] group">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+              <p class="text-[#121118] text-sm font-medium leading-normal">Where can I find more information on ethics training?</p>
+              <div class="text-[#121118] group-open:rotate-180 transition-transform" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                </svg>
+              </div>
+            </summary>
+            <p class="text-[#696388] text-sm font-normal leading-normal pb-2">
+              Additional ethics training resources are available through OGE.gov, your agency's ethics office, and specialized training programs. This app provides comprehensive modules covering all major ethics topics.
+            </p>
+          </details>
+          
+          <details class="flex flex-col rounded-xl border border-[#dddce5] bg-white px-[15px] py-[7px] group">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-2">
+              <p class="text-[#121118] text-sm font-medium leading-normal">What should I do if I'm offered a gift?</p>
+              <div class="text-[#121118] group-open:rotate-180 transition-transform" data-icon="CaretDown" data-size="20px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                </svg>
+              </div>
+            </summary>
+            <p class="text-[#696388] text-sm font-normal leading-normal pb-2">
+              Generally, you should politely decline gifts from prohibited sources. Some gifts under $20 may be acceptable, but always consult your ethics official if you're unsure about the rules.
+            </p>
+          </details>
+        </div>
+      </div>
+      
+      <div id="glossaryTab" class="tab-content hidden">
+        <h3 class="text-[#121118] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Ethics Glossary</h3>
+        <div class="flex flex-col p-4 gap-3">
+          <div class="rounded-xl border border-[#dddce5] bg-white px-4 py-3">
+            <h4 class="text-[#121118] text-sm font-bold leading-normal">Conflict of Interest</h4>
+            <p class="text-[#696388] text-sm font-normal leading-normal">A situation where personal interests could improperly influence official duties.</p>
+          </div>
+          <div class="rounded-xl border border-[#dddce5] bg-white px-4 py-3">
+            <h4 class="text-[#121118] text-sm font-bold leading-normal">Prohibited Source</h4>
+            <p class="text-[#696388] text-sm font-normal leading-normal">A person or organization that seeks official action from your agency or does business with your agency.</p>
+          </div>
+          <div class="rounded-xl border border-[#dddce5] bg-white px-4 py-3">
+            <h4 class="text-[#121118] text-sm font-bold leading-normal">Financial Disclosure</h4>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Reports required to identify potential conflicts of interest based on financial holdings.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div id="documentsTab" class="tab-content hidden">
+        <h3 class="text-[#121118] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Official Documents</h3>
+        <div class="flex flex-col p-4 gap-3">
+          <div class="rounded-xl border border-[#dddce5] bg-white px-4 py-3 cursor-pointer hover:bg-[#f8f9fa] transition-colors">
+            <h4 class="text-[#121118] text-sm font-bold leading-normal">Standards of Ethical Conduct</h4>
+            <p class="text-[#696388] text-sm font-normal leading-normal">5 CFR Part 2635 - Complete regulations governing federal employee ethics</p>
+          </div>
+          <div class="rounded-xl border border-[#dddce5] bg-white px-4 py-3 cursor-pointer hover:bg-[#f8f9fa] transition-colors">
+            <h4 class="text-[#121118] text-sm font-bold leading-normal">EPA Ethics Guide</h4>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Agency-specific ethics guidance and procedures</p>
+          </div>
+          <div class="rounded-xl border border-[#dddce5] bg-white px-4 py-3 cursor-pointer hover:bg-[#f8f9fa] transition-colors">
+            <h4 class="text-[#121118] text-sm font-bold leading-normal">OGE Advisory Opinions</h4>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Official interpretations of ethics rules</p>
+          </div>
+        </div>
+      </div>
+      
+      <div id="contactTab" class="tab-content hidden">
+        <h3 class="text-[#121118] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Contact Ethics Office</h3>
+        <div class="flex flex-col p-4 gap-3">
+          <div class="rounded-xl border border-[#dddce5] bg-white px-4 py-3">
+            <h4 class="text-[#121118] text-sm font-bold leading-normal">EPA Ethics Office</h4>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Phone: (202) 564-2130</p>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Email: ethics@epa.gov</p>
+          </div>
+          <div class="rounded-xl border border-[#dddce5] bg-white px-4 py-3">
+            <h4 class="text-[#121118] text-sm font-bold leading-normal">Office of Government Ethics</h4>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Website: oge.gov</p>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Phone: (202) 482-9300</p>
+          </div>
+          <div class="rounded-xl border border-[#dddce5] bg-white px-4 py-3">
+            <h4 class="text-[#121118] text-sm font-bold leading-normal">Inspector General Hotline</h4>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Phone: 1-888-546-8740</p>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Web: epa.gov/oig/report-fraud</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="flex gap-2 border-t border-[#f1f0f4] bg-white px-4 pb-3 pt-2">
+        <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#696388]" href="home.html">
+          <div class="text-[#696388] flex h-8 items-center justify-center" data-icon="House" data-size="24px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.10Z"></path>
+            </svg>
+          </div>
+          <p class="text-[#696388] text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+        </a>
+        <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#696388]" href="ethics-guide.html">
+          <div class="text-[#696388] flex h-8 items-center justify-center" data-icon="GraduationCap" data-size="24px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M251.76,88.94l-120-64a8,8,0,0,0-7.52,0l-120,64a8,8,0,0,0,0,14.12L32,117.87v48.42a15.91,15.91,0,0,0,4.06,10.65C49.16,191.53,78.51,216,128,216a130,130,0,0,0,48-8.76V240a8,8,0,0,0,16,0V199.51a115.63,115.63,0,0,0,27.94-22.57A15.91,15.91,0,0,0,224,166.29V117.87l27.76-14.81a8,8,0,0,0,0-14.12ZM128,200c-43.27,0-68.72-21.14-80-33.71V126.4l76.24,40.66a8,8,0,0,0,7.52,0L176,143.47v46.34C163.4,195.69,147.52,200,128,200Zm80-33.75a97.83,97.83,0,0,1-16,14.25V134.93l16-8.53ZM188,118.94l-.22-.13-56-29.87a8,8,0,0,0-7.52,14.12L171,128l-43,22.93L25,96,128,41.07,231,96Z"></path>
+            </svg>
+          </div>
+          <p class="text-[#696388] text-xs font-medium leading-normal tracking-[0.015em]">Training</p>
+        </a>
+        <a class="just flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-[#121118]" href="resources.html">
+          <div class="text-[#121118] flex h-8 items-center justify-center" data-icon="File" data-size="24px" data-weight="fill">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM152,88V44l44,44Z"></path>
+            </svg>
+          </div>
+          <p class="text-[#121118] text-xs font-medium leading-normal tracking-[0.015em]">Resources</p>
+        </a>
+        <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#696388]" href="#profile">
+          <div class="text-[#696388] flex h-8 items-center justify-center" data-icon="User" data-size="24px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+            </svg>
+          </div>
+          <p class="text-[#696388] text-xs font-medium leading-normal tracking-[0.015em]">Profile</p>
+        </a>
+      </div>
+      <div class="h-5 bg-white"></div>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabName) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.add('hidden');
+      });
+      
+      // Show selected tab
+      document.getElementById(tabName + 'Tab').classList.remove('hidden');
+      
+      // Update tab navigation
+      document.querySelectorAll('.flex.border-b a').forEach(link => {
+        link.classList.remove('border-b-[#A51C30]', 'text-[#1B365D]');
+        link.classList.add('border-b-transparent', 'text-[#696388]');
+        link.querySelector('p').classList.remove('text-[#1B365D]');
+        link.querySelector('p').classList.add('text-[#696388]');
+      });
+      
+      // Set active tab
+      event.target.closest('a').classList.remove('border-b-transparent', 'text-[#696388]');
+      event.target.closest('a').classList.add('border-b-[#A51C30]', 'text-[#1B365D]');
+      event.target.closest('a').querySelector('p').classList.remove('text-[#696388]');
+      event.target.closest('a').querySelector('p').classList.add('text-[#1B365D]');
+    }
+  </script>
+</body>
+</html>

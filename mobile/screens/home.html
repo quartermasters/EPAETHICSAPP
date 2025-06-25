@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EthicsGo - Home</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden" style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+    <div>
+      <div class="@container">
+        <div class="@[480px]:px-4 @[480px]:py-3">
+          <div class="w-full bg-center bg-no-repeat bg-cover flex flex-col justify-end overflow-hidden @[480px]:rounded-xl min-h-[218px]" style='background: linear-gradient(135deg, #1B365D 0%, #A51C30 100%);'>
+            <div class="flex items-center justify-center h-full">
+              <div class="text-center text-white p-8">
+                <div class="w-20 h-20 mx-auto mb-4 bg-white rounded-full flex items-center justify-center backdrop-blur-sm p-2 shadow-2xl">
+                  <img src="st-michael-logo.png" alt="EPA EthicsGo" class="w-full h-full object-contain rounded-full">
+                </div>
+                <h1 class="text-2xl font-bold mb-2">EthicsGo</h1>
+                <p class="text-white text-opacity-90">Federal Ethics Awareness Platform</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-[#696388] text-sm font-normal leading-normal pb-3 pt-1 px-4 text-center" id="apiStatus">API Connection: Checking...</p>
+      <h2 class="text-[#1B365D] tracking-light text-[28px] font-bold leading-tight px-4 text-center pb-3 pt-5">Welcome to EthicsGo</h2>
+      <p class="text-[#121118] text-base font-normal leading-normal pb-3 pt-1 px-4 text-center">Stay compliant with federal ethics regulations. Access training, quizzes, videos, and resources.</p>
+      
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+        <div class="flex flex-col gap-3 pb-3" onclick="navigateTo('ethics-guide')">
+          <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl cursor-pointer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6gsUV9Wc9iI2sqDZsk3Wvlz8sMYyRQa27uftkpQU1gAz2M4NQ0vKN47lMt5431EjZjc2slD3u--ecPXKn2D2zXP8-Nv6-m8a_pHEOIPGfBwyyrCqlHbZz9PxawHJtdad1633fXTR02dNOLkskcSLkT0IcAXbUXPZMEHvpd7rMW98478qU5vvXI8PxqLyTSacUWWt1PEKR7l4gVgJDUvRSqHNRfNqZPeWLFYoRU5BMli7VzF8Lk-DBTQ2xqmJSsfiIbs7HtMCYkZg");'></div>
+          <div>
+            <p class="text-[#121118] text-base font-medium leading-normal">Ethics Guide</p>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Interactive training modules</p>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-3 pb-3" onclick="navigateTo('quiz')">
+          <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl cursor-pointer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPuHyJNd_VVeIKjZzUlBOkWUq7ea93UMEqAEgPotCJ-BuEohhyTxPWuw1TjWpdqhAPveOMKWRweTFH2DUtslN9W_iv7BfNi0vz_NbQa1UD7qEfwQSybyCNIRkgNtlOaxLaB-ze5Ixh8_gd0qKr2QjDyPHjRB6kVOMiRGmt1IPRTk1JLT8daZWnaSZETKxRHIqgLX7qphY1yfUkqh-udRX2-0czUJCiecPIyy9pwxD7524Yv1ckDl7B3b9ao11ebZzOtidBDs-h8FM");'></div>
+          <div>
+            <p class="text-[#121118] text-base font-medium leading-normal">Test Your Knowledge</p>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Quiz system</p>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-3 pb-3" onclick="navigateTo('videos')">
+          <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl cursor-pointer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuApuJr_qEmX9QN4PV9ygDENCtq7THeMFlAkQ6-xcbkmvPTBz8-iFrWR7157L3JLvVU1ha2qXH1dChfEd9TI2PfBco6EVedaoBnPDRkhzdTI5f0YI6yZDBMzl9FnNGBFtZoOk-k2Rmb8SaRsLIJ1rA_esAdGlazInRkl_3Dz1YUz7WPYP7RimKPypuZN9gUnMiWcUbc6PCWEgOc-1AcUf1zU32Nj9HLuCiFlCJYKFnTsPGU83Wb82vuXL1ICOt9yxZLpxJvQT6pp_hA");'></div>
+          <div>
+            <p class="text-[#121118] text-base font-medium leading-normal">Training Videos</p>
+            <p class="text-[#696388] text-sm font-normal leading-normal">Whiteboard sessions</p>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-3 pb-3" onclick="navigateTo('resources')">
+          <div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl cursor-pointer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDbcjZrZ3285TPD4q-0XUfSurl40bsHsKHSIF0f92YfQY8Nmgi26RjL5kxYfIwW2zUicFhKwiRXc-swTmqjDtw2jEg1XkPuEO1t7uBGTr7JYdJimJMST8NbZZz8P7u2zE7j-7c7vqUstdwRrY-4FQ0B9JUaYlpdXiuBhYhqSCqQWYR4jmti3sd1AODn2IKm1DSRLl-4hyynYmlJDtczMjUB-05Oney1TViBvDy-r3UbvRvMRZHpDpFkSNMyfT-siMzqAQvOrN2nkZc");'></div>
+          <div>
+            <p class="text-[#121118] text-base font-medium leading-normal">Resources</p>
+            <p class="text-[#696388] text-sm font-normal leading-normal">FAQ, Glossary, Documents</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="flex flex-col items-center pb-3 pt-1 px-4">
+        <div class="w-16 h-16 mb-2 rounded-full bg-white p-1 shadow-lg">
+          <img src="st-michael-logo.png" alt="St. Michael Enterprises LLC" class="w-full h-full object-contain rounded-full">
+        </div>
+        <p class="text-[#1B365D] text-sm font-medium leading-normal text-center">Developed by St. Michael Enterprises LLC</p>
+        <p class="text-[#A51C30] text-xs font-normal leading-normal text-center">EPA Contract 68HERD25Q0050</p>
+      </div>
+      <div class="h-5 bg-white"></div>
+    </div>
+  </div>
+
+  <script>
+    // Check API status
+    async function checkAPIStatus() {
+      try {
+        const response = await fetch('http://localhost:3001/api/health');
+        const data = await response.json();
+        document.getElementById('apiStatus').textContent = `API Connection: Online ✅ - ${data.developer}`;
+      } catch (error) {
+        document.getElementById('apiStatus').textContent = 'API Connection: Offline ❌ - Start backend on port 3001';
+      }
+    }
+
+    function navigateTo(screen) {
+      window.location.href = `${screen}.html`;
+    }
+
+    // Initialize
+    checkAPIStatus();
+  </script>
+</body>
+</html>

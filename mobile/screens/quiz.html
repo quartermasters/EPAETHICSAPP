@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EthicsGo - Quiz</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+  <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden" style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+    <div>
+      <div class="flex items-center bg-white p-4 pb-2 justify-between">
+        <div class="text-[#121118] flex size-12 shrink-0 items-center cursor-pointer" onclick="navigateTo('home')" data-icon="ArrowLeft" data-size="24px" data-weight="regular">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
+          </svg>
+        </div>
+        <h2 class="text-[#1B365D] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Ethics Training</h2>
+      </div>
+      
+      <div class="flex flex-col gap-3 p-4">
+        <div class="flex gap-6 justify-between">
+          <p class="text-[#1B365D] text-base font-medium leading-normal" id="questionCounter">Question 1 of 15</p>
+        </div>
+        <div class="rounded bg-[#dddce5]">
+          <div class="h-2 rounded bg-[#A51C30]" id="progressBar" style="width: 7%;"></div>
+        </div>
+      </div>
+      
+      <div class="p-4">
+        <div class="bg-cover bg-center flex flex-col items-stretch justify-end rounded-xl pt-[132px]" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAntkrMC-lfCFb5R6A5sxQt2fO37bFZFR3YhU2LnvovCc-ISg3PSRTtP791M9nNwKXVkYeNASg84JxZxECuUwB9eru-ivAJXS3_6wfjPjlWcly-jq5pAkfCan7Ssnd8QvM0IoDxAFFeLGyQrFArF71slHk2z6CAVInjsZiminkWnGa5bDANuyFwrK7dWRyT8i8u0ZH96o6vdLLbskZ44W7xXH5Bsimln2oeRIHxJ6ZySnqmjKnCLASpKZ6LL4lrUL7QB06-S-MW4zI");'>
+          <div class="flex w-full items-end justify-between gap-4 p-4">
+            <p class="text-white tracking-light text-2xl font-bold leading-tight flex-1" id="questionText">Which of the following actions is permissible under the EPA's ethics guidelines?</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex justify-center">
+        <div class="flex flex-1 gap-3 max-w-[480px] flex-col items-stretch px-4 py-3" id="answerOptions">
+          <button class="answer-option flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f1f0f4] text-[#121118] text-sm font-bold leading-normal tracking-[0.015em] w-full hover:bg-[#e1e0e4] transition-colors" data-answer="A">
+            <span class="truncate">Accepting a gift from a prohibited source if it is valued at less than $20.</span>
+          </button>
+          <button class="answer-option flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f1f0f4] text-[#121118] text-sm font-bold leading-normal tracking-[0.015em] w-full hover:bg-[#e1e0e4] transition-colors" data-answer="B">
+            <span class="truncate">Using government resources for personal use if it does not interfere with official duties.</span>
+          </button>
+          <button class="answer-option flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f1f0f4] text-[#121118] text-sm font-bold leading-normal tracking-[0.015em] w-full hover:bg-[#e1e0e4] transition-colors" data-answer="C">
+            <span class="truncate">Disclosing potential conflicts of interest to a supervisor.</span>
+          </button>
+          <button class="answer-option flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f1f0f4] text-[#121118] text-sm font-bold leading-normal tracking-[0.015em] w-full hover:bg-[#e1e0e4] transition-colors" data-answer="D">
+            <span class="truncate">Engaging in outside employment that conflicts with official duties.</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="flex justify-stretch">
+        <div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-between">
+          <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#f1f0f4] text-[#121118] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#e1e0e4] transition-colors" id="prevBtn" onclick="previousQuestion()">
+            <span class="truncate">Previous</span>
+          </button>
+          <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#A51C30] text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#8B1627] transition-colors" id="nextBtn" onclick="nextQuestion()">
+            <span class="truncate">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <div class="flex gap-2 border-t border-[#f1f0f4] bg-white px-4 pb-3 pt-2">
+        <a class="just flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-[#121118]" href="home.html">
+          <div class="text-[#121118] flex h-8 items-center justify-center" data-icon="House" data-size="24px" data-weight="fill">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M224,115.55V208a16,16,0,0,1-16,16H168a16,16,0,0,1-16-16V168a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v40a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V115.55a16,16,0,0,1,5.17-11.78l80-75.48.11-.11a16,16,0,0,1,21.53,0,1.14,1.14,0,0,0,.11.11l80,75.48A16,16,0,0,1,224,115.55Z"></path>
+            </svg>
+          </div>
+        </a>
+        <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#696388]" href="ethics-guide.html">
+          <div class="text-[#696388] flex h-8 items-center justify-center" data-icon="MagnifyingGlass" data-size="24px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+            </svg>
+          </div>
+        </a>
+        <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#696388]" href="resources.html">
+          <div class="text-[#696388] flex h-8 items-center justify-center" data-icon="Bookmark" data-size="24px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M184,32H72A16,16,0,0,0,56,48V224a8,8,0,0,0,12.24,6.78L128,193.43l59.77,37.35A8,8,0,0,0,200,224V48A16,16,0,0,0,184,32Zm0,16V161.57l-51.77-32.35a8,8,0,0,0-8.48,0L72,161.56V48ZM132.23,177.22a8,8,0,0,0-8.48,0L72,209.57V180.43l56-35,56,35v29.14Z"></path>
+            </svg>
+          </div>
+        </a>
+        <a class="just flex flex-1 flex-col items-center justify-end gap-1 text-[#696388]" href="#profile">
+          <div class="text-[#696388] flex h-8 items-center justify-center" data-icon="User" data-size="24px" data-weight="regular">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"></path>
+            </svg>
+          </div>
+        </a>
+      </div>
+      <div class="h-5 bg-white"></div>
+    </div>
+  </div>
+
+  <script>
+    let currentQuestion = 1;
+    let totalQuestions = 15;
+    let selectedAnswer = null;
+
+    // Sample quiz data
+    const questions = [
+      {
+        question: "Which of the following actions is permissible under the EPA's ethics guidelines?",
+        options: [
+          "Accepting a gift from a prohibited source if it is valued at less than $20.",
+          "Using government resources for personal use if it does not interfere with official duties.",
+          "Disclosing potential conflicts of interest to a supervisor.",
+          "Engaging in outside employment that conflicts with official duties."
+        ],
+        correct: "C"
+      },
+      {
+        question: "What should a federal employee do if offered a gift from a contractor?",
+        options: [
+          "Accept it if it's under $20",
+          "Politely decline the gift",
+          "Accept it but report it later",
+          "Accept it only if other employees are present"
+        ],
+        correct: "B"
+      }
+    ];
+
+    function navigateTo(screen) {
+      window.location.href = `${screen}.html`;
+    }
+
+    function updateQuestion() {
+      const questionData = questions[Math.min(currentQuestion - 1, questions.length - 1)];
+      document.getElementById('questionCounter').textContent = `Question ${currentQuestion} of ${totalQuestions}`;
+      document.getElementById('progressBar').style.width = `${(currentQuestion / totalQuestions) * 100}%`;
+      document.getElementById('questionText').textContent = questionData.question;
+      
+      const options = document.querySelectorAll('.answer-option span');
+      options.forEach((option, index) => {
+        option.textContent = questionData.options[index];
+      });
+
+      // Reset selected answer
+      selectedAnswer = null;
+      document.querySelectorAll('.answer-option').forEach(btn => {
+        btn.classList.remove('bg-[#A51C30]', 'text-white');
+        btn.classList.add('bg-[#f1f0f4]', 'text-[#121118]');
+      });
+
+      // Update button states
+      document.getElementById('prevBtn').disabled = currentQuestion === 1;
+      document.getElementById('nextBtn').textContent = currentQuestion === totalQuestions ? 'Submit' : 'Next';
+    }
+
+    function selectAnswer(answer) {
+      selectedAnswer = answer;
+      document.querySelectorAll('.answer-option').forEach(btn => {
+        btn.classList.remove('bg-[#A51C30]', 'text-white');
+        btn.classList.add('bg-[#f1f0f4]', 'text-[#121118]');
+      });
+      
+      const selectedBtn = document.querySelector(`[data-answer="${answer}"]`);
+      selectedBtn.classList.remove('bg-[#f1f0f4]', 'text-[#121118]');
+      selectedBtn.classList.add('bg-[#A51C30]', 'text-white');
+    }
+
+    function previousQuestion() {
+      if (currentQuestion > 1) {
+        currentQuestion--;
+        updateQuestion();
+      }
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < totalQuestions) {
+        currentQuestion++;
+        updateQuestion();
+      } else {
+        // Submit quiz
+        alert('Quiz completed! Your results will be displayed here.');
+      }
+    }
+
+    // Add event listeners to answer options
+    document.querySelectorAll('.answer-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectAnswer(btn.dataset.answer);
+      });
+    });
+
+    // Initialize
+    updateQuestion();
+  </script>
+</body>
+</html>
