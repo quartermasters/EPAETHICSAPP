@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
-import { Colors, Typography, Spacing, EPABranding } from '../../../shared/design/design-system';
+import { Colors, Typography, Spacing } from '../../design/design-system';
 
 export interface EPAHeaderProps {
   title?: string;

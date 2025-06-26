@@ -9,7 +9,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Colors, Typography, Spacing, BorderRadius, Layout } from '../../../shared/design/design-system';
+import { Colors, Typography, Spacing, BorderRadius, Layout } from '../../design/design-system';
 
 export interface InputProps extends Omit<TextInputProps, 'style'> {
   label?: string;

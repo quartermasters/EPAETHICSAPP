@@ -7,8 +7,8 @@ import {
   Linking,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Colors, Typography, Spacing } from '../../../shared/design/design-system';
-import { StMichaelBranding } from '../../../shared/design/st-michael-branding';
+import { Colors, Typography, Spacing } from '../../design/design-system';
+import { StMichaelBranding } from '../../design/st-michael-branding';
 
 export interface ContractorFooterProps {
   variant?: 'full' | 'minimal' | 'about';

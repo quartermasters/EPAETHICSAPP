@@ -1,77 +1,93 @@
-export default function HomePage() {
+'use client';
+
+import { useState, useEffect } from 'react';
+
+export default function AdminPortal() {
+  const [apiStatus, setApiStatus] = useState('checking');
+
+  useEffect(() => {
+    checkAPI();
+  }, []);
+
+  const checkAPI = async () => {
+    try {
+      const response = await fetch('http://localhost:3002/api/health');
+      const data = await response.json();
+      setApiStatus('connected');
+    } catch (error) {
+      setApiStatus('offline');
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="flex justify-center">
-          <div className="bg-blue-600 text-white px-6 py-3 rounded-lg">
-            <h1 className="text-2xl font-bold">EPA</h1>
-            <p className="text-sm">Ethics Admin</p>
-          </div>
-        </div>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          EPA Ethics App Administration
-        </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Secure content management portal
-        </p>
-      </div>
-
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <div className="text-center">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">
-              🚧 Admin Portal In Development
-            </h3>
-            <p className="text-gray-600 mb-6">
-              The content management system is being built. Core features include:
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 to-red-900">
+      <div className="container mx-auto px-4 py-8">
+        <div className="bg-white rounded-lg shadow-xl p-8">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">
+              EPA Ethics Admin Portal
+            </h1>
+            <p className="text-gray-600">
+              Administrative Interface for EthicsGo Platform
             </p>
-            <ul className="text-left text-sm text-gray-600 space-y-2 mb-6">
-              <li>• Ethics training module management</li>
-              <li>• Quiz question creation and editing</li>
-              <li>• User progress tracking and analytics</li>
-              <li>• Media upload and organization</li>
-              <li>• System administration tools</li>
-            </ul>
-            <div className="bg-green-50 border border-green-200 rounded-md p-4 mb-6">
-              <p className="text-sm text-green-700">
-                ✅ Backend API: Operational<br/>
-                ✅ Database: Connected<br/>
-                ✅ Mobile App: Functional<br/>
-                ✅ Admin Interface: Ready for Demo
-              </p>
-            </div>
-            
-            <div className="space-y-3">
-              <a href="/login" className="block w-full bg-blue-50 border border-blue-200 rounded-md p-3 text-left hover:bg-blue-100 transition-colors">
-                <div className="flex items-center">
-                  <span className="mr-3">🔐</span>
-                  <div>
-                    <div className="text-sm font-medium text-blue-900">Administrator Login</div>
-                    <div className="text-xs text-blue-700">Access content management dashboard</div>
-                  </div>
-                </div>
-              </a>
-
-              <a href="/dashboard" className="block w-full bg-purple-50 border border-purple-200 rounded-md p-3 text-left hover:bg-purple-100 transition-colors">
-                <div className="flex items-center">
-                  <span className="mr-3">📊</span>
-                  <div>
-                    <div className="text-sm font-medium text-purple-900">Demo Dashboard</div>
-                    <div className="text-xs text-purple-700">Preview admin interface</div>
-                  </div>
-                </div>
-              </a>
+            <div className="mt-4 text-sm text-gray-500">
+              EPA Contract 68HERD25Q0050 | St. Michael Enterprises LLC
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="mt-8 text-center">
-        <div className="text-xs text-gray-500 space-y-1">
-          <p>FedRAMP Low Authorized • Section 508 Compliant</p>
-          <p>U.S. Environmental Protection Agency</p>
-          <p className="text-blue-600">Developed by St. Michael Enterprises LLC</p>
-          <p className="text-red-600">EPA Contract 68HERD25Q0050</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h2 className="text-xl font-semibold mb-4">System Status</h2>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span>Backend API:</span>
+                  <span className={`px-2 py-1 rounded text-sm ${
+                    apiStatus === 'connected' ? 'bg-green-100 text-green-800' : 
+                    apiStatus === 'offline' ? 'bg-red-100 text-red-800' :
+                    'bg-yellow-100 text-yellow-800'
+                  }`}>
+                    {apiStatus === 'connected' ? 'Online' : 
+                     apiStatus === 'offline' ? 'Offline' : 'Checking...'}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Admin Portal:</span>
+                  <span className="px-2 py-1 rounded text-sm bg-green-100 text-green-800">
+                    Online
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
+              <div className="space-y-2">
+                <button 
+                  onClick={checkAPI}
+                  className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+                >
+                  Refresh API Status
+                </button>
+                <div className="text-sm text-gray-600 mt-4">
+                  <p><strong>Demo Credentials:</strong></p>
+                  <p>Username: admin</p>
+                  <p>Password: demo123</p>
+                  <p>MFA Code: 123456</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <div className="text-sm text-gray-500">
+              Access Points:
+            </div>
+            <div className="mt-2 space-y-1 text-sm">
+              <div>Mobile App: <a href="http://localhost:19007" className="text-blue-600 hover:underline">http://localhost:19007</a></div>
+              <div>Backend API: <a href="http://localhost:3002/api/health" className="text-blue-600 hover:underline">http://localhost:3002/api/health</a></div>
+              <div>Admin Portal: <a href="http://localhost:3003" className="text-blue-600 hover:underline">http://localhost:3003</a></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,6 @@ import morgan from 'morgan';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
 import session from 'express-session';
-import connectPgSimple from 'connect-pg-simple';
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
 
@@ -23,18 +22,20 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Database connection
-const pool = new Pool({
-  host: process.env.DB_HOST || 'localhost',
-  port: parseInt(process.env.DB_PORT || '5432'),
-  database: process.env.DB_NAME || 'epa_ethics',
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'password',
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
-});
-
-// Session store
-const PgSession = connectPgSimple(session);
+// Database connection (optional for demo)
+let pool: Pool | null = null;
+try {
+  pool = new Pool({
+    host: process.env.DB_HOST || 'localhost',
+    port: parseInt(process.env.DB_PORT || '5432'),
+    database: process.env.DB_NAME || 'epa_ethics',
+    user: process.env.DB_USER || 'postgres',
+    password: process.env.DB_PASSWORD || 'password',
+    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  });
+} catch (error) {
+  logger.warn('Database connection failed, running in demo mode');
+}
 
 // Security middleware
 app.use(helmet({
@@ -82,13 +83,9 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
 }));
 
-// Session configuration
+// Session configuration (memory store for demo)
 app.use(session({
-  store: new PgSession({
-    pool: pool,
-    tableName: 'user_sessions',
-  }),
-  secret: process.env.SESSION_SECRET || 'your-secret-key',
+  secret: process.env.SESSION_SECRET || 'epa-ethics-demo-secret-key',
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -112,6 +109,7 @@ app.get('/api/health', (req, res) => {
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
     environment: process.env.NODE_ENV || 'development',
+    developer: 'St. Michael Enterprises LLC - EPA Contract 68HERD25Q0050',
   });
 });
 
@@ -142,18 +140,26 @@ app.use('*', (req, res) => {
 // Graceful shutdown
 process.on('SIGTERM', () => {
   logger.info('SIGTERM received, shutting down gracefully');
-  pool.end(() => {
-    logger.info('Database connection pool closed');
+  if (pool) {
+    pool.end(() => {
+      logger.info('Database connection pool closed');
+      process.exit(0);
+    });
+  } else {
     process.exit(0);
-  });
+  }
 });
 
 process.on('SIGINT', () => {
   logger.info('SIGINT received, shutting down gracefully');
-  pool.end(() => {
-    logger.info('Database connection pool closed');
+  if (pool) {
+    pool.end(() => {
+      logger.info('Database connection pool closed');
+      process.exit(0);
+    });
+  } else {
     process.exit(0);
-  });
+  }
 });
 
 // Start server
@@ -161,14 +167,18 @@ app.listen(PORT, () => {
   logger.info(`EPA Ethics API server running on port ${PORT}`);
   logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
   
-  // Test database connection
-  pool.query('SELECT NOW()', (err, result) => {
-    if (err) {
-      logger.error('Database connection failed:', err);
-    } else {
-      logger.info('Database connected successfully');
-    }
-  });
+  // Test database connection (optional)
+  if (pool) {
+    pool.query('SELECT NOW()', (err, result) => {
+      if (err) {
+        logger.error('Database connection failed:', err);
+      } else {
+        logger.info('Database connected successfully');
+      }
+    });
+  } else {
+    logger.info('Running in demo mode without database');
+  }
 });
 
 export { app, pool };
