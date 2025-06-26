@@ -8,6 +8,7 @@ import {
   AccessibilityInfo,
   Dimensions,
   Alert,
+  Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -109,7 +110,13 @@ const HomeScreen: React.FC = () => {
         {/* Welcome Section */}
         <View style={styles.welcomeSection}>
           <View style={styles.logoContainer}>
-            <Text style={styles.logoText}>EPA</Text>
+            <Image
+              source={require('../../assets/EPA_logo.svg.png')}
+              style={styles.epaLogo}
+              resizeMode="contain"
+              accessible={true}
+              accessibilityLabel="EPA Logo - Environmental Protection Agency"
+            />
             <Text style={styles.logoSubtext}>Ethics</Text>
           </View>
           <Text style={styles.welcomeTitle}>
@@ -211,7 +218,7 @@ const HomeScreen: React.FC = () => {
 
         {/* Accessibility Notice */}
         <View style={styles.accessibilityNotice}>
-          <Ionicons name="accessibility-outline" size={20} color="#0066CC" />
+          <Ionicons name="shield-checkmark" size={20} color="#0066CC" />
           <Text style={styles.accessibilityText}>
             This app is designed to be fully accessible. 
             Use screen readers, voice control, or keyboard navigation as needed.
@@ -244,10 +251,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 16,
   },
-  logoText: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#0066CC',
+  epaLogo: {
+    width: width * 0.5,
+    height: 60,
+    marginBottom: 8,
   },
   logoSubtext: {
     fontSize: 16,

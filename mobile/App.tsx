@@ -1,25 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Platform, AccessibilityInfo } from 'react-native';
 
+import StartupScreen from './src/screens/StartupScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import EthicsGuideScreen from './src/screens/EthicsGuideScreen';
+import ModuleDetailScreen from './src/screens/ModuleDetailScreen';
 import VideoLibraryScreen from './src/screens/VideoLibraryScreen';
 import QuizScreen from './src/screens/QuizScreen';
 import ResourcesScreen from './src/screens/ResourcesScreen';
 
 const Tab = createBottomTabNavigator();
+const EthicsStack = createStackNavigator();
+
+// Ethics Guide Stack Navigator
+function EthicsGuideStack() {
+  return (
+    <EthicsStack.Navigator screenOptions={{ headerShown: false }}>
+      <EthicsStack.Screen name="EthicsGuideMain" component={EthicsGuideScreen} />
+      <EthicsStack.Screen name="ModuleDetail" component={ModuleDetailScreen} />
+    </EthicsStack.Navigator>
+  );
+}
 
 export default function App() {
-  React.useEffect(() => {
+  const [showStartup, setShowStartup] = useState(true);
+
+  const handleStartupComplete = () => {
+    setShowStartup(false);
     // Announce app launch for screen readers
     if (Platform.OS === 'ios' || Platform.OS === 'android') {
       AccessibilityInfo.announceForAccessibility('EPA Ethics App launched. Navigate using bottom tabs.');
     }
-  }, []);
+  };
+
+  if (showStartup) {
+    return (
+      <SafeAreaProvider>
+        <StartupScreen onComplete={handleStartupComplete} />
+      </SafeAreaProvider>
+    );
+  }
 
   return (
     <SafeAreaProvider>
@@ -85,7 +110,7 @@ export default function App() {
           />
           <Tab.Screen 
             name="Ethics Guide" 
-            component={EthicsGuideScreen}
+            component={EthicsGuideStack}
             options={{ 
               title: 'Ethics Guide',
               headerAccessibilityLabel: 'Ethics Guide Screen'

@@ -373,7 +373,7 @@ const VideoLibraryScreen: React.FC = () => {
 
         {/* Accessibility Notice */}
         <View style={styles.accessibilityNotice}>
-          <Ionicons name="accessibility-outline" size={20} color="#0066CC" />
+          <Ionicons name="shield-checkmark" size={20} color="#0066CC" />
           <Text style={styles.accessibilityNoticeText}>
             All videos include closed captions, transcripts, and audio descriptions for full accessibility.
           </Text>
