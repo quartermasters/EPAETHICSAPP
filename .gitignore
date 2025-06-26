@@ -167,3 +167,6 @@ storybook-static/
 # Capacitor
 android/
 ios/
+
+# Development Archive - Unnecessary files moved here
+Useless/
