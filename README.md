@@ -19,7 +19,6 @@
 **🔄 Rights Transfer**: Upon EPA contract award, full ownership transfers to St. Michael LLC
 
 </div>
-
 ## 🌟 Platform Overview
 
 <table>
@@ -158,7 +157,6 @@ graph TB
 **Recommendation**: Deploy with **SDK 49** for stability, plan **SDK 53** upgrade for future enhancement cycle.
 
 ---
-
 ## 🎮 **Interactive Experience Map**
 
 <div align="center">
